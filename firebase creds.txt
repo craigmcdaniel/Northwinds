@@ -1,0 +1,6 @@
+ apiKey: "AIzaSyAKG1l47aV_PyyE2Y7K7xUenbveucGJjnU",
+    authDomain: "northwinds-angular.firebaseapp.com",
+    databaseURL: "https://northwinds-angular.firebaseio.com",
+    projectId: "northwinds-angular",
+    storageBucket: "northwinds-angular.appspot.com",
+    messagingSenderId: "25105181633"
