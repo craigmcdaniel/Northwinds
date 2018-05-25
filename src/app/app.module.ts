@@ -25,6 +25,7 @@ import { ErrorComponent } from './error/error.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
 import { CallbackComponent } from './callback/callback.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -32,17 +33,13 @@ import { CallbackComponent } from './callback/callback.component';
   declarations: [
     AppComponent,
     EmployeesComponent,
-    
     HomeComponent,
     AdminComponent,
     ErrorComponent,
-   
-    
     ProductsComponent,
-    
     ProductDetailsModalComponent,
-    
-    CallbackComponent
+    CallbackComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +60,7 @@ import { CallbackComponent } from './callback/callback.component';
       {path: 'admin', component: AdminComponent, canActivate: [
         AuthGuard
       ]},
-      {path: 'callback', component: CallbackComponent},
+      {path: 'login', component: LoginComponent},
       {path: '**', component: ErrorComponent}
      
                 ]),

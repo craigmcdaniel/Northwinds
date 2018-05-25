@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
-export class AuthService {
+export class AuthService{ 
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
 constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
@@ -21,6 +21,7 @@ this.user.subscribe(
         }
       );
   }
+  
 signInWithTwitter() {
     return this._firebaseAuth.auth.signInWithPopup(
       new firebase.auth.TwitterAuthProvider()
@@ -43,6 +44,11 @@ isLoggedIn() {
       return true;
     }
   }
+
+  signInRegular(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential( email, password );
+ return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+ }
 logout() {
     this._firebaseAuth.auth.signOut()
     .then((res) => this.router.navigate(['/']));
