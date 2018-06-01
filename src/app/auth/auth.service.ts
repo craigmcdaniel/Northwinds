@@ -1,57 +1,57 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import  * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+
+
+
 @Injectable()
-export class AuthService{ 
+export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
-constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
-      this.user = _firebaseAuth.authState;
-this.user.subscribe(
-        (user) => {
-          if (user) {
-            this.userDetails = user;
-            console.log(this.userDetails);
-          }
-          else {
-            this.userDetails = null;
-          }
+  constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
+    this.user = _firebaseAuth.authState;
+    this.user.subscribe(
+      (user) => {
+        if (this.user) {
+          this.userDetails = user;
+          
+        } else {
+          this.userDetails = null;
         }
-      );
-  }
-  
-signInWithTwitter() {
-    return this._firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.TwitterAuthProvider()
+      }
     )
   }
-signInWithFacebook() {
-    return this._firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.FacebookAuthProvider()
-    )
-  }
-signInWithGoogle() {
+ 
+  signInWithGoogle() {
     return this._firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
-    )
-  }
-isLoggedIn() {
-  if (this.userDetails == null ) {
+    );
+  };
+  isLoggedIn() {
+    if (this.userDetails == null) {
       return false;
     } else {
       return true;
     }
-  }
+  };
+  logout() {
+    this._firebaseAuth.auth.signOut()
+      .then((res) => this.router.navigate(['/']));
+  };
 
   signInRegular(email, password) {
-    const credential = firebase.auth.EmailAuthProvider.credential( email, password );
- return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
- }
-logout() {
-    this._firebaseAuth.auth.signOut()
-    .then((res) => this.router.navigate(['/']));
-  }
-}
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    return this._firebaseAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        this.user = user;
+       
+      })
+      .catch(error => console.log(error));
+  };
+
+
+
 }

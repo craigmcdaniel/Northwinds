@@ -20,17 +20,15 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService ,  private router: Router,
     private route: ActivatedRoute) { }
   
-  signInWithEmail() {
-    this.auth.signInRegular(this.user.email, this.user.password)
-       .then((res) => {
-          console.log(res);
-    this.router.navigateByUrl('admin');
-          
-       })
-       .catch((err) => console.log('error: ' + err));
- }
- 
-
+    signInWithEmail() {
+      this.auth.signInRegular(this.user.email, this.user.password)
+         .then((res) => {
+            console.log(res);
+      
+            this.router.navigate(['/admin']);
+         })
+         .catch((err) => console.log('error: ' + err));
+   }
   ngOnInit() {
   }
 

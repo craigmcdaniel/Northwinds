@@ -24,7 +24,7 @@ import { ErrorComponent } from './error/error.component';
 
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
-import { CallbackComponent } from './callback/callback.component';
+
 import { LoginComponent } from './login/login.component';
 
 
@@ -38,7 +38,7 @@ import { LoginComponent } from './login/login.component';
     ErrorComponent,
     ProductsComponent,
     ProductDetailsModalComponent,
-    CallbackComponent,
+   
     LoginComponent
   ],
   imports: [

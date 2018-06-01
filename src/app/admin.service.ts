@@ -10,7 +10,7 @@ export class AdminService {
   
   constructor(
     
-    private authService: AuthService
+  
   ) { }
 
  
