@@ -48,4 +48,3 @@ logout() {
     .then((res) => this.router.navigate(['/']));
   }
 }
-}
