@@ -1,30 +1,40 @@
-import { AuthService } from './auth/auth.service';
-import { ProductsService } from './products.service';
-import { AdminComponent } from './admin/admin/admin.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Http, Headers, HttpModule} from '@angular/http';
-import 'rxjs/add/operator/map';
-import {RouterModule} from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {AdminService } from './admin.service';
-import { AuthGuard } from './auth/auth.guard';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import 'rxjs/add/operator/map';
 import { environment } from '../environments/environment';
+import { AdminService } from './admin.service';
+import { AdminComponent } from './admin/admin/admin.component';
 import { AppComponent } from './app.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 import { EmployeeService } from './employee.service';
-
-import { HomeComponent } from './home/home.component';
+import { EmployeesComponent } from './employees/employees.component';
 import { ErrorComponent } from './error/error.component';
-
-import { ProductsComponent } from './products/products.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
-import { CallbackComponent } from './callback/callback.component';
+<<<<<<< HEAD
+
+import { LoginComponent } from './login/login.component';
+=======
+import { ProductsService } from './products.service';
+import { ProductsComponent } from './products/products.component';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { HomeCaroselComponent } from './home-carosel/home-carosel.component';
+import { OrderService } from './order.service';
+import { OrderComponent } from './order/order.component';
+
+
+
+
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
 
 
 
@@ -32,46 +42,68 @@ import { CallbackComponent } from './callback/callback.component';
   declarations: [
     AppComponent,
     EmployeesComponent,
-    
     HomeComponent,
     AdminComponent,
     ErrorComponent,
-   
-    
     ProductsComponent,
-    
     ProductDetailsModalComponent,
-    
-    CallbackComponent
+<<<<<<< HEAD
+   
+    LoginComponent
+=======
+
+    LoginComponent,
+
+    HomeCaroselComponent,
+
+    OrderComponent
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
   ],
   imports: [
+    NgBootstrapFormValidationModule.forRoot(),
     BrowserModule,
     NgbModule.forRoot(),
     HttpModule,
-  
-  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  AngularFireAuthModule,
-   AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule,
+
+    // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
 
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      { path: '', component: HomeComponent },
 
-      {path: 'employees', component: EmployeesComponent},
-     
-      {path: 'products', component: ProductsComponent},
-      {path: 'admin', component: AdminComponent, canActivate: [
+      { path: 'employees', component: EmployeesComponent,canActivate: [
         AuthGuard
+<<<<<<< HEAD
       ]},
-      {path: 'callback', component: CallbackComponent},
+      {path: 'login', component: LoginComponent},
       {path: '**', component: ErrorComponent}
      
                 ]),
+=======
+      ] },
+
+      { path: 'products', component: ProductsComponent },
+      {
+        path: 'admin', component: AdminComponent, canActivate: [
+          AuthGuard
+        ]
+      },
+      {
+        path: 'order', component: OrderComponent
+      },
+      { path: 'login', component: LoginComponent },
+      { path: '**', component: ErrorComponent }
+
+    ]),
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
 
 
 
   ],
-  providers: [EmployeeService,ProductsService,AuthService,AuthGuard,AdminService],
+  providers: [EmployeeService,OrderService, ProductsService, AuthService, AuthGuard, AdminService],
   bootstrap: [AppComponent],
   entryComponents: [ProductDetailsModalComponent]
 
