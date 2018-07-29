@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,6 +23,9 @@ import { ProductDetailsModalComponent } from './product-details-modal/product-de
 import { ProductsService } from './products.service';
 import { ProductsComponent } from './products/products.component';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { HomeCaroselComponent } from './home-carosel/home-carosel.component';
+import { OrderService } from './order.service';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -39,13 +43,18 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
     ProductsComponent,
     ProductDetailsModalComponent,
 
-    LoginComponent
+    LoginComponent,
+
+    HomeCaroselComponent,
+
+    OrderComponent
   ],
   imports: [
     NgBootstrapFormValidationModule.forRoot(),
     BrowserModule,
     NgbModule.forRoot(),
     HttpModule,
+    HttpClientModule,
 
     // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
@@ -65,6 +74,9 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
           AuthGuard
         ]
       },
+      {
+        path: 'order', component: OrderComponent
+      },
       { path: 'login', component: LoginComponent },
       { path: '**', component: ErrorComponent }
 
@@ -73,7 +85,7 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 
   ],
-  providers: [EmployeeService, ProductsService, AuthService, AuthGuard, AdminService],
+  providers: [EmployeeService,OrderService, ProductsService, AuthService, AuthGuard, AdminService],
   bootstrap: [AppComponent],
   entryComponents: [ProductDetailsModalComponent]
 
