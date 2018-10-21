@@ -16,7 +16,7 @@ export class CallbackComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.handleLoginCallback();
+    
   }
 
 }
