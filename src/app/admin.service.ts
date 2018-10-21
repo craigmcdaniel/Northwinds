@@ -17,12 +17,6 @@ export class AdminService {
  
 
   // Implement a method to get the private deals
-  getAdmin() {
-    return this.http
-      .get(this.AdminUrl, {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
-      });
-      
-  }
+ 
  
 }
