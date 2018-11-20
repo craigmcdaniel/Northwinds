@@ -2,6 +2,7 @@ import { ProductDetailsModalComponent } from './../product-details-modal/product
 import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { getPluralCategory } from '@angular/common/src/i18n/localization';
 
 
 @Component({
@@ -13,9 +14,9 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   `<div class="container-fluid">
  
   <form #f="ngForm">
-  <select name="cat"  [(ngModel)]="cat.category"  (ngModelChange)="SearchProduct(cat.category)">
-    <option value="*" selected>Choose a category</option>
-    <option *ngFor="let e of cat">
+  <select name="cat"   [(ngModel)]="cat.category"  (ngModelChange)="SearchProduct(cat.category)">
+   
+    <option *ngFor="let e of cat" >
     {{e.category }} </option>
    
   </select>
@@ -51,7 +52,8 @@ export class ProductsComponent {
   }
 
   SearchProduct(name: string) {  
-    let obj = this.products.filter(m => m.category === name);  
+
+   let  obj = this.products.filter(m => m.category === name);  
     this.ProductDetails = obj;  
     console.log(this.ProductDetails) ;
     return this.ProductDetails; 
