@@ -16,7 +16,7 @@ import { getPluralCategory } from '@angular/common/src/i18n/localization';
   <form #f="ngForm">
   <select name="cat"   [(ngModel)]="cat.category"  (ngModelChange)="SearchProduct(cat.category)">
    
-    <option *ngFor="let e of cat" >
+    <option *ngFor="let e of cat" [attr.value]="e.category" [attr.selected]="e.category == 'Candy' ? true : null">
     {{e.category }} </option>
    
   </select>
@@ -53,7 +53,8 @@ export class ProductsComponent {
 
   SearchProduct(name: string) {  
 
-   let  obj = this.products.filter(m => m.category === name);  
+   let  obj = this.products.filter(m => m.category === name); 
+   name =="Candy" ;
     this.ProductDetails = obj;  
     console.log(this.ProductDetails) ;
     return this.ProductDetails; 
@@ -70,6 +71,8 @@ export class ProductsComponent {
   ngOnInit(){
     this.service.getCat().subscribe(cat => {
       this.cat = cat;
+      cat.name = "Candy";
+
       
       
     });
