@@ -17,6 +17,15 @@
       <li routerLinkActive="active">
         <a class="nav-link " routerLink="products">Products</a>
       </li>
+<<<<<<< HEAD
+      <li class="nav-item dropdown" style = "cursor:pointer;" ngbDropdown>
+        <a   class="nav-link dropdown-toggle" ngbDropdownToggle   id="dropdown01"  aria-haspopup="true" aria-expanded="false"></a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" *ngIf = "auth.isLoggedIn()" routerLink="admin">Admin Console</a>
+          <a class="dropdown-item" *ngIf = "!auth.isLoggedIn()" routerLink="login">Log in</a>
+          <a class="dropdown-item" *ngIf = "auth.isLoggedIn()" (click)="auth.logout()" >Log out</a>
+        </div>
+=======
      
     
       <li *ngIf = "auth.authenticated" class="nav-item dropdown" style = "cursor:pointer;" ngbDropdown>
@@ -26,6 +35,7 @@
       
           <a class="dropdown-item"  *ngIf = "auth.authenticated" routerLink="admin">Admin Console</a>
           </div>
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
       </li>
       <li routerLinkActive="active">
           <a class="nav-link "  *ngIf = "!auth. authenticated" routerLink="login">Log in</a>

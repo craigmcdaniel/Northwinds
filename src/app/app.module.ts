@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,13 +20,21 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
+<<<<<<< HEAD
+
+import { LoginComponent } from './login/login.component';
+=======
 import { ProductsService } from './products.service';
 import { ProductsComponent } from './products/products.component';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { HomeCaroselComponent } from './home-carosel/home-carosel.component';
+import { OrderService } from './order.service';
+import { OrderComponent } from './order/order.component';
 
 
 
 
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
 
 
 
@@ -38,14 +47,24 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
     ErrorComponent,
     ProductsComponent,
     ProductDetailsModalComponent,
-
+<<<<<<< HEAD
+   
     LoginComponent
+=======
+
+    LoginComponent,
+
+    HomeCaroselComponent,
+
+    OrderComponent
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
   ],
   imports: [
     NgBootstrapFormValidationModule.forRoot(),
     BrowserModule,
     NgbModule.forRoot(),
     HttpModule,
+    HttpClientModule,
 
     // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
@@ -57,6 +76,13 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
       { path: 'employees', component: EmployeesComponent,canActivate: [
         AuthGuard
+<<<<<<< HEAD
+      ]},
+      {path: 'login', component: LoginComponent},
+      {path: '**', component: ErrorComponent}
+     
+                ]),
+=======
       ] },
 
       { path: 'products', component: ProductsComponent },
@@ -65,15 +91,19 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
           AuthGuard
         ]
       },
+      {
+        path: 'order', component: OrderComponent
+      },
       { path: 'login', component: LoginComponent },
       { path: '**', component: ErrorComponent }
 
     ]),
+>>>>>>> 3fe45ec5a5be58a7cc3afe5161ea2d030caffba5
 
 
 
   ],
-  providers: [EmployeeService, ProductsService, AuthService, AuthGuard, AdminService],
+  providers: [EmployeeService,OrderService, ProductsService, AuthService, AuthGuard, AdminService],
   bootstrap: [AppComponent],
   entryComponents: [ProductDetailsModalComponent]
 
