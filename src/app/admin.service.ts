@@ -7,10 +7,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AdminService {
   
-  
+  private AdminUrl = 'http://localhost:3001/admin';
+
   constructor(
     
-  
+    private authService: AuthService
   ) { }
 
  
